@@ -1,4 +1,4 @@
-# fastly
+# Coinbase
 Coinbase ColdFusion Rest API Client
 
 Only supports v1 commands
