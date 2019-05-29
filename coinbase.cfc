@@ -6,11 +6,8 @@ component{
 	,	string version= "v1"
 	,	string endPoint= "https://coinbase.com/api/#arguments.version#"
 	,	numeric httpTimeOut= 120
-	,	boolean debug= false
+	,	boolean debug= ( request.debug ?: false )
 	) {
-		if ( structKeyExists( request, "debug" ) && request.debug == true ) {
-			this.debug = request.debug;
-		}
 		structAppend( this, arguments, true );
 		return this;
 	}
@@ -255,12 +252,8 @@ component{
 		out.headers = http.responseHeader;
 		out.args = arguments;
 		out.http = http;
-		//  RESPONSE CODE ERRORS 
-		if ( !structKeyExists( http, "responseHeader" ) || !structKeyExists( http.responseHeader, "Status_Code" ) || http.responseHeader.Status_Code == "" ) {
-			out.statusCode = 500;
-		} else {
-			out.statusCode = http.responseHeader.Status_Code;
-		}
+		out.statusCode = http.responseHeader.Status_Code ?: 500;
+		this.debugLog( out.statusCode );
 		if ( left( out.statusCode, 1 ) == 4 || left( out.statusCode, 1 ) == 5 ) {
 			out.error = "status code error: #out.statusCode#;";
 		} else if ( out.response == "Connection Timeout" || out.response == "Connection Failure" ) {
