@@ -12,4 +12,12 @@ Coinbase ColdFusion Rest API Client
 
 Only supports v1 commands
 
+## To Install
+Run the following from commandbox:
+`box install cfcoinbase`
+
+## Changes
+2019-05-29 Open source release
+
+## API documentation
 https://developers.coinbase.com/
