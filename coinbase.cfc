@@ -258,7 +258,7 @@ component{
 			out.error = "status code error: #out.statusCode#;";
 		} else if ( out.response == "Connection Timeout" || out.response == "Connection Failure" ) {
 			out.error = out.response;
-		} else if ( http.responseHeader.Status_Code == "200" ) {
+		} else if ( left( out.statusCode, 1 ) == 2 ) {
 			out.success = true;
 		}
 		//  parse response 
