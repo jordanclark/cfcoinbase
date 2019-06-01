@@ -1,7 +1,7 @@
 {
     "name":"cfcoinbase",
     "slug":"cfcoinbase",
-    "version":"0.5.0",
+    "version":"0.5.1",
     "author":"Jordan Clark <jordanclark@gmail.com>",
     "keywords":[
         "coinbase",
@@ -11,7 +11,7 @@
     ],
     "shortDescription":"API client for Coinbase.com",
     "type":"modules",
-    "location":"jordanclark/cfcoinbase#v0.5.0",
+    "location":"jordanclark/cfcoinbase#v0.5.1",
     "repository":{
         "URL":"https://github.com/jordanclark/cfcoinbase.git",
         "type":"GIT"
