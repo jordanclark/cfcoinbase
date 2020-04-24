@@ -1,13 +1,14 @@
 component{
-	cfprocessingdirective( preserveCase=true );
+	// cfprocessingdirective( preserveCase=true );
 
 	function init(
 		required string apiKey
 	,	string version= "v1"
 	,	string endPoint= "https://coinbase.com/api/#arguments.version#"
 	,	numeric httpTimeOut= 120
-	,	boolean debug= ( request.debug ?: false )
+	,	boolean debug
 	) {
+		arguments.debug = ( arguments.debug ?: request.debug ?: false );
 		structAppend( this, arguments, true );
 		return this;
 	}
@@ -20,7 +21,12 @@ component{
 				request.log( arguments.input );
 			}
 		} else if( this.debug ) {
-			cftrace( text=( isSimpleValue( arguments.input ) ? arguments.input : "" ), var=arguments.input, category="Coinbase", type="information" );
+			var info= ( isSimpleValue( arguments.input ) ? arguments.input : serializeJson( arguments.input ) );
+			cftrace(
+				var= "info"
+			,	category= "Coinbase"
+			,	type= "information"
+			);
 		}
 		return;
 	}
